@@ -1,3 +1,5 @@
+package Lab2.Task3;
+
 import java.util.ArrayList;
 import java.util.List;
 

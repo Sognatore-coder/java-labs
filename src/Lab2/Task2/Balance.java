@@ -1,3 +1,5 @@
+package Lab2.Task2;
+
 public class Balance {
     private int leftWeight;
     private int rightWeight;

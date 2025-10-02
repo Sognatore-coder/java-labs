@@ -1,3 +1,5 @@
+package Lab2.Task4;
+
 public class Table {
     private int[][] data; // Двумерный массив
     private int rows;     // Количество строк
