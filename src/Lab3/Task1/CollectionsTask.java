@@ -1,3 +1,5 @@
+package Lab3.Task1;
+
 import java.util.*;
 import java.util.stream.Collectors;
 
