@@ -8,7 +8,7 @@ public class MapKeyValueSwapper {
         origMap1.put("banana", 2);
         origMap1.put("orange", 3);
         origMap1.put("apple", 4);
-        origMap1.put("melon", 2); // выдаст исключение, т.к 2 уже существует
+        //origMap1.put("melon", 2); // выдаст исключение, т.к 2 уже существует
 
         System.out.println("Оригинальный Map: " + origMap1);
         Map<Integer,String> swappedMap1 = swapKeyAndVal(origMap1);
