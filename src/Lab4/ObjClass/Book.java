@@ -1,13 +1,13 @@
 package Lab4.ObjClass;
 
 
-import lombok.AllArgsConstrustor;
+import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.Data;
 
 @Data
 @NoArgsConstructor
-@AllArgsConstrustor
+@AllArgsConstructor
 public class Book {
     private String name;
     private String author;
