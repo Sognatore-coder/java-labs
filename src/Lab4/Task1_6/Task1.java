@@ -1,6 +1,6 @@
 package Lab4.Task1_6;
 
-import ObjClass.Visitor;
+import Lab4.ObjClass.Visitor;
 import java.util.List;
 
 // Список посетителей
