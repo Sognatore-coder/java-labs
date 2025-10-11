@@ -19,7 +19,7 @@ public class Main {
     public static void main(String[] args) {
         try {
             // Чтение JSON файла
-            String jsonContent = new String(Files.readAllBytes(Paths.get("book.json")));
+            String jsonContent = new String(Files.readAllBytes(Paths.get("src/Lab4/book.json")));
 
             // Парсинг JSON
             Gson gson = new Gson();
