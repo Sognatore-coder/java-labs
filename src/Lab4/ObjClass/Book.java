@@ -20,11 +20,11 @@ public class Book {
         if(this == o ) return true;
         if(o == null || getClass() != o.getClass()) return false;
         Book book = (Book) o;
-        return java.util.Object.equals(isbn, book.isbn);
+        return java.util.Objects.equals(isbn, book.isbn);
     }
 
     @Override
     public int hashCode() {
-        return java.util.Object.hash(isbn);
+        return java.util.Objects.hash(isbn);
     }
 }
