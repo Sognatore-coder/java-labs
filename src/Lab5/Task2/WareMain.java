@@ -1,0 +1,44 @@
+package Lab5.Task2;
+
+// Главный класс для демонстрации
+
+public class WareMain {
+    public static void main(String[] args) {
+
+        // Создаем склад
+        ShoeWarehouse warehouse = new ShoeWarehouse();
+        try {
+            // Создаем и запускаем производителя (20 заказов)
+            Thread producerThread = new Thread(new Producer(warehouse, 20), "Producer");
+
+            producerThread.start();
+            producerThread.join();
+
+            System.out.println("\nВсе заказы созданы! Заказов на складе: " + warehouse.getOrderCount());
+
+            // Создаем и запускаем потребителей (по 5 заказов на каждого)
+            Thread consumer1 = new Thread(new Consumer(warehouse, "Consumer-1"));
+            Thread consumer2 = new Thread(new Consumer(warehouse, "Consumer-2"));
+            Thread consumer3 = new Thread(new Consumer(warehouse, "Consumer-3"));
+            Thread consumer4 = new Thread(new Consumer(warehouse, "Consumer-4"));
+
+            // Запускаем все потоки
+            consumer1.start();
+            consumer2.start();
+            consumer3.start();
+            consumer4.start();
+
+            consumer1.join();
+            consumer2.join();
+            consumer3.join();
+            consumer4.join();
+
+
+            System.out.println("Все заказы обработаны!");
+            System.out.println("Осталось заказов на складе: " + warehouse.getOrderCount());
+        } catch(InterruptedException e){
+            System.out.println("Основной поток был прерван: " + e.getMessage());
+            Thread.currentThread().interrupt();
+        }
+    }
+}
