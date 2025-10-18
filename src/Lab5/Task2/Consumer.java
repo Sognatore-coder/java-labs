@@ -2,38 +2,37 @@ package Lab5.Task2;
 
 import java.util.Random;
 
-// Потребитель заказов
-
+// Класс для потребителя заказов
 public class Consumer implements Runnable {
 
     private final ShoeWarehouse warehouse;
-    private final int ordersToProcess;
+    private final String name;
     private final Random random = new Random();
 
-    public Consumer(ShoeWarehouse warehouse, int ordersToProcess) {
+    public Consumer(ShoeWarehouse warehouse, String name) {
         this.warehouse = warehouse;
-        this.ordersToProcess = ordersToProcess;
+        this.name = name;
     }
 
     @Override
     public void run() {
-        System.out.println(Thread.currentThread().getName() + " начал работу");
+        System.out.println(name + " начал работу");
 
-        for (int i = 0; i < ordersToProcess; i++) {
+        while (true) {
             Order order = warehouse.fulfillOrder();
             if (order == null) {
-                break; // Прерываем если получили null
+                // Заказов больше нет
+                System.out.println(name + " завершил работу - заказов больше нет");
+                break;
             }
 
             try {
                 // Имитация времени на обработку заказа
-                Thread.sleep(random.nextInt(800) + 200);
+                Thread.sleep(600);
             } catch (InterruptedException e) {
-                System.out.println("Consumer прерван: " + e.getMessage());
+                System.out.println(name + " прерван");
                 break;
             }
         }
-
-        System.out.println(Thread.currentThread().getName() + " завершил работу");
     }
 }

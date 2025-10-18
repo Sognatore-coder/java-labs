@@ -21,4 +21,3 @@ public class EvenThread extends Thread {
         System.out.println(Thread.currentThread().getName() + " завершил работу");
     }
 }
-}

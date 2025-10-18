@@ -3,71 +3,60 @@ package Lab5.Task2;
 import java.util.LinkedList;
 import java.util.Queue;
 
-// Склад обуви с синхронизированными методами
-
+// Класс для склада
 public class ShoeWarehouse {
 
-    // Поле со списком товаров
     public static final String[] SHOE_TYPES = {
             "Nike Air Max", "Adidas Ultraboost", "Puma RS-X",
-            "Reebok Classic", "Converse Chuck Taylor", "Vans Old Skool"
+            "Reebok Classic", "Converse Chuck Taylor"
     };
 
-    // Максимальная вместимость склада
-    private static final int MAX_CAPACITY = 10;
-
-    // Очередь заказов (FIFO)
+    private static final int MAX_CAPACITY = 20; //
     private final Queue<Order> orders = new LinkedList<>();
+    private boolean productionFinished = false; // Флаг для координации между потребителем и производителем
 
-    // Метод для добавления заказа на склад
     public synchronized void receiveOrder(Order order) {
-        // Ждем, если склад полон
         while (orders.size() >= MAX_CAPACITY) {
             try {
                 System.out.println("Склад полон! Producer ждет...");
                 wait();
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();
-                System.out.println("Producer прерван: " + e.getMessage());
                 return;
             }
         }
 
-        // Добавляем заказ
         orders.offer(order);
-        System.out.println("Добавлен: " + order + " | Заказов на складе: " + orders.size());
-
-        // Уведомляем всех ожидающих потребителей
+        System.out.println("ДОБАВЛЕН: " + order + " | Всего заказов: " + orders.size());
         notifyAll();
     }
 
-    // Метод для обработки заказа
     public synchronized Order fulfillOrder() {
-        // Ждем, если склад пуст
         while (orders.isEmpty()) {
+            if (productionFinished) {
+                return null; // Производство завершено и заказов нет
+            }
             try {
-                System.out.println("Склад пуст! Consumer ждет...");
-                wait();
+                System.out.println("Consumer ждет заказы...");
+                wait(300); // Выстраиваем очередь для потребителей.
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();
-                System.out.println("Consumer прерван: " + e.getMessage());
                 return null;
             }
         }
 
-        // Извлекаем заказ (FIFO)
         Order order = orders.poll();
-        System.out.println("Обработан: " + order + " | Заказов на складе: " + orders.size());
-
-        // Уведомляем всех ожидающих производителей
+        System.out.println("ОБРАБОТАН: " + order + " | Осталось заказов: " + orders.size());
         notifyAll();
-
         return order;
     }
 
-    // Текущее кол-во заказов на складе
+    public synchronized void finishProduction() {
+        productionFinished = true;
+        notifyAll(); // Будим всех потребителей
+    }
+
     public synchronized int getOrderCount() {
         return orders.size();
     }
-}
 }

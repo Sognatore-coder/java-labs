@@ -2,7 +2,7 @@ package Lab5.Task2;
 
 import java.util.Random;
 
-// Производитель заказов
+// Класс для производителя заказов
 public class Producer implements Runnable {
 
     private final ShoeWarehouse warehouse;
@@ -16,25 +16,26 @@ public class Producer implements Runnable {
 
     @Override
     public void run() {
-        System.out.println(Thread.currentThread().getName() + " начал работу");
+        System.out.println("\nPRODUCER начал создание " + orderCount + " заказов");
 
         for (int i = 1; i <= orderCount; i++) {
-            // Случайный выбор типа обуви и количества
             String shoeType = ShoeWarehouse.SHOE_TYPES[random.nextInt(ShoeWarehouse.SHOE_TYPES.length)];
-            int quantity = random.nextInt(10) + 1; // от 1 до 10
+            int quantity = random.nextInt(5) + 1; // от 1 до 5
 
             Order order = new Order(i, shoeType, quantity);
             warehouse.receiveOrder(order);
 
             try {
-                // Имитация времени на создание заказа
-                Thread.sleep(random.nextInt(500) + 100);
+                // Быстрое создание заказов
+                Thread.sleep(500);
             } catch (InterruptedException e) {
-                System.out.println("Producer прерван: " + e.getMessage());
+                System.out.println("Producer прерван");
                 break;
             }
         }
 
-        System.out.println(Thread.currentThread().getName() + " завершил работу");
+        // Сообщаем что производство завершено
+        warehouse.finishProduction();
+        System.out.println("\nPRODUCER завершил создание всех заказов");
     }
 }
