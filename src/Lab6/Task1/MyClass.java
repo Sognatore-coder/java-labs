@@ -3,9 +3,12 @@ package Lab6.Task1;
 public class MyClass {
 
     //Публичные методы
+    @Repeat(times = 2)
     public String publicMet1(){
         return "Public Method 1";
     }
+
+    @Repeat(times = 4)
     public int publicMet2(int x,int y){
         return x+y;
     }

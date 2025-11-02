@@ -11,7 +11,7 @@ public class Invoker {
             Class<?> clazz = myClass.getClass();
             Method[] methods = clazz.getDeclaredMethods();
 
-            System.out.println("=== Вызов аннотированных защищенных и приватных методов ===\n");
+            System.out.println("=== Вызов всех аннотированных методов ===\n");
 
             for (Method method : methods) {
                 if (method.isAnnotationPresent(Repeat.class)) {
