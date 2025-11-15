@@ -1,5 +1,7 @@
 import lsp.*;
 import ocp.*;
+import isp.*;
+import dsp.*;
 import srp.ReportManager;
 
 import java.util.List;
@@ -19,6 +21,27 @@ public class Main {
         // ------ L -------
         displayFlyingBird(new Sparrow());
         displayNonFlyingBird(new Penguin()); // Теперь нет исключения
+
+
+        // ------ I -------
+        Printer oldPrinter = new OldPrinter();
+        oldPrinter.print("Отчёт за неделю");
+
+        MultiFunctionMachine mfm = new MultiFunctionMachine();
+        mfm.print("Документ");
+        mfm.scan("Фотография");
+        mfm.fax("Договор");
+
+
+        // ------ D -------
+        MessageSender emailSender = new EmailSender();
+        NotificationService emailService = new NotificationService(emailSender);
+        emailService.send("Ваш заказ готов к выдаче!");
+
+
+        MessageSender smsSender = new SmsSender();
+        NotificationService smsService = new NotificationService(smsSender);
+        smsService.send("Ваш код подтверждения: 123456");
     }
 
     public static void displayFlyingBird(FlyingBird bird) {
