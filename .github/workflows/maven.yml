@@ -2,9 +2,9 @@ name: Java CI with Maven
 
 on:
   push:
-    branches: [ "main", "master", "Lab4" ]
+    branches: [ "main", "master", "Lab9" ]
   pull_request:
-    branches: [ "main", "master", "Lab4" ]
+    branches: [ "main", "master", "Lab9" ]
 
 jobs:
   build:
@@ -24,4 +24,4 @@ jobs:
         run: mvn -B compile --file pom.xml
 
       - name: Run with Maven
-        run: mvn exec:java -Dexec.mainClass="Lab4.Main" --file pom.xml
+        run: mvn exec:java -Dexec.mainClass="Lab9.Main" --file pom.xml
