@@ -1,5 +1,9 @@
 .idea/
-.idea/misc.xml
+*.iws
+*.iml
+*.ipr
+
 /classes
+/out
 /lib
 /target
