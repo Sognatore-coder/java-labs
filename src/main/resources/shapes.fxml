@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.canvas.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox xmlns="http://javafx.com/javafx/11.0.1"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="JavaFX.shapes.controller.ShapesController"
+      spacing="10"
+      style="-fx-padding: 15; -fx-background-color: #f0f0f0;">
+
+    <!-- Панель кнопок -->
+    <HBox spacing="10" alignment="CENTER">
+        <Button text="Добавить Прямоугольник" onAction="#handleAddRectangle"
+                style="-fx-font-size: 14; -fx-pref-width: 180; -fx-pref-height: 40;"/>
+        <Button text="Добавить Круг" onAction="#handleAddCircle"
+                style="-fx-font-size: 14; -fx-pref-width: 150; -fx-pref-height: 40;"/>
+    </HBox>
+
+    <!-- Холст -->
+    <Pane fx:id="canvasContainer" VBox.vgrow="ALWAYS" style="-fx-border-color: #ccc; -fx-border-width: 2;">
+        <Canvas fx:id="canvas"
+                onMousePressed="#handleCanvasMousePressed"
+                onMouseDragged="#handleCanvasMouseDragged"
+                onMouseReleased="#handleCanvasMouseReleased"/>
+    </Pane>
+
+    <!-- Подсказки -->
+    <Label text="ЛКМ: перетаскивание фигур | ПКМ: смена цвета фигуры"
+           style="-fx-font-size: 12; -fx-text-fill: #666;"/>
+</VBox>
