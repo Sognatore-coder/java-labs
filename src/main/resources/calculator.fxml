@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns="http://javafx.com/javafx/11.0.1"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="JavaFX.calculator.controller.CalculatorController"
+            prefWidth="400" prefHeight="500"
+            style="-fx-background-color: #2c3e50;">
+
+    <top>
+        <TextField fx:id="displayField"
+                   style="-fx-font-size: 24; -fx-background-color: #34495e; -fx-text-fill: white; -fx-border-color: #1abc9c;"
+                   prefHeight="80"
+                   BorderPane.alignment="CENTER"
+                   editable="false"
+                   onKeyPressed="#handleKeyPressed">
+            <BorderPane.margin>
+                <Insets top="20" right="20" left="20" bottom="10"/>
+            </BorderPane.margin>
+        </TextField>
+    </top>
+
+    <center>
+        <GridPane vgap="10" hgap="10"
+                  BorderPane.alignment="CENTER"
+                  prefWidth="400" prefHeight="400">
+            <padding><Insets top="10" right="20" left="20" bottom="20"/></padding>
+
+            <!-- Настройка размеров кнопок -->
+            <columnConstraints>
+                <ColumnConstraints percentWidth="25"/>
+                <ColumnConstraints percentWidth="25"/>
+                <ColumnConstraints percentWidth="25"/>
+                <ColumnConstraints percentWidth="25"/>
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints percentHeight="20"/>
+                <RowConstraints percentHeight="20"/>
+                <RowConstraints percentHeight="20"/>
+                <RowConstraints percentHeight="20"/>
+                <RowConstraints percentHeight="20"/>
+            </rowConstraints>
+
+            <!-- Первый ряд -->
+            <Button text="C" onAction="#handleButtonAction" GridPane.columnIndex="0" GridPane.rowIndex="0"
+                    style="-fx-font-size: 18; -fx-background-color: #e74c3c; -fx-text-fill: white;"/>
+            <Button text="⌫" onAction="#handleButtonAction" GridPane.columnIndex="1" GridPane.rowIndex="0"
+                    style="-fx-font-size: 18; -fx-background-color: #e67e22; -fx-text-fill: white;"/>
+            <Button text="±" onAction="#handleButtonAction" GridPane.columnIndex="2" GridPane.rowIndex="0"
+                    style="-fx-font-size: 18; -fx-background-color: #f39c12; -fx-text-fill: white;"/>
+            <Button text="/" onAction="#handleButtonAction" GridPane.columnIndex="3" GridPane.rowIndex="0"
+                    style="-fx-font-size: 18; -fx-background-color: #3498db; -fx-text-fill: white;"/>
+
+            <!-- Второй ряд -->
+            <Button text="7" onAction="#handleButtonAction" GridPane.columnIndex="0" GridPane.rowIndex="1"
+                    style="-fx-font-size: 18; -fx-background-color: #34495e; -fx-text-fill: white;"/>
+            <Button text="8" onAction="#handleButtonAction" GridPane.columnIndex="1" GridPane.rowIndex="1"
+                    style="-fx-font-size: 18; -fx-background-color: #34495e; -fx-text-fill: white;"/>
+            <Button text="9" onAction="#handleButtonAction" GridPane.columnIndex="2" GridPane.rowIndex="1"
+                    style="-fx-font-size: 18; -fx-background-color: #34495e; -fx-text-fill: white;"/>
+            <Button text="*" onAction="#handleButtonAction" GridPane.columnIndex="3" GridPane.rowIndex="1"
+                    style="-fx-font-size: 18; -fx-background-color: #3498db; -fx-text-fill: white;"/>
+
+            <!-- Третий ряд -->
+            <Button text="4" onAction="#handleButtonAction" GridPane.columnIndex="0" GridPane.rowIndex="2"
+                    style="-fx-font-size: 18; -fx-background-color: #34495e; -fx-text-fill: white;"/>
+            <Button text="5" onAction="#handleButtonAction" GridPane.columnIndex="1" GridPane.rowIndex="2"
+                    style="-fx-font-size: 18; -fx-background-color: #34495e; -fx-text-fill: white;"/>
+            <Button text="6" onAction="#handleButtonAction" GridPane.columnIndex="2" GridPane.rowIndex="2"
+                    style="-fx-font-size: 18; -fx-background-color: #34495e; -fx-text-fill: white;"/>
+            <Button text="-" onAction="#handleButtonAction" GridPane.columnIndex="3" GridPane.rowIndex="2"
+                    style="-fx-font-size: 18; -fx-background-color: #3498db; -fx-text-fill: white;"/>
+
+            <!-- Четвертый ряд -->
+            <Button text="1" onAction="#handleButtonAction" GridPane.columnIndex="0" GridPane.rowIndex="3"
+                    style="-fx-font-size: 18; -fx-background-color: #34495e; -fx-text-fill: white;"/>
+            <Button text="2" onAction="#handleButtonAction" GridPane.columnIndex="1" GridPane.rowIndex="3"
+                    style="-fx-font-size: 18; -fx-background-color: #34495e; -fx-text-fill: white;"/>
+            <Button text="3" onAction="#handleButtonAction" GridPane.columnIndex="2" GridPane.rowIndex="3"
+                    style="-fx-font-size: 18; -fx-background-color: #34495e; -fx-text-fill: white;"/>
+            <Button text="+" onAction="#handleButtonAction" GridPane.columnIndex="3" GridPane.rowIndex="3"
+                    style="-fx-font-size: 18; -fx-background-color: #3498db; -fx-text-fill: white;"/>
+
+            <!-- Пятый ряд -->
+            <Button text="0" onAction="#handleButtonAction" GridPane.columnIndex="0" GridPane.rowIndex="4" GridPane.columnSpan="2"
+                    style="-fx-font-size: 18; -fx-background-color: #34495e; -fx-text-fill: white;"/>
+            <Button text="." onAction="#handleButtonAction" GridPane.columnIndex="2" GridPane.rowIndex="4"
+                    style="-fx-font-size: 18; -fx-background-color: #34495e; -fx-text-fill: white;"/>
+            <Button text="=" onAction="#handleButtonAction" GridPane.columnIndex="3" GridPane.rowIndex="4"
+                    style="-fx-font-size: 18; -fx-background-color: #2ecc71; -fx-text-fill: white;"/>
+
+
+        </GridPane>
+    </center>
+</BorderPane>
